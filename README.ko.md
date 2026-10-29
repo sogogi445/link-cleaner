@@ -17,6 +17,7 @@ https://www.instagram.com/p/ABC123/?igsh=MXx  ->  https://www.instagram.com/p/AB
 - **모든 사이트**: `utm_*`, `fbclid`, `gclid`, `igsh`, `igshid`, `msclkid`, `mc_cid` 등
 - **알리익스프레스**: 상품 주소(`/item/123.html`)는 `?` 뒤 전부를 지우고, 페이지를 열자마자 주소창도 깨끗하게 바꿈
 - **인스타그램**: 게시물·릴스·스토리·프로필 주소의 `?` 뒤 전부 (캐러셀 몇 번째 사진인지 `img_index`만 유지), 페이지를 열자마자 주소창도 깨끗하게 바꿈
+- **스레드**: 게시물·프로필 주소의 `?` 뒤 전부 (`xmt`, `slof` 등. 검색 주소는 그대로 둠), 페이지를 열자마자 주소창도 깨끗하게 바꿈
 - **그 외**: 틱톡, 페이스북, 아마존의 추적 파라미터. 흔히 보이는 이름을 기준으로 만든 규칙이고 샘플 주소로만 확인해서, 일부 링크는 몇 개가 남을 수 있습니다.
 
 ## 동작 방식
@@ -38,11 +39,11 @@ https://www.instagram.com/p/ABC123/?igsh=MXx  ->  https://www.instagram.com/p/AB
 - 사이트가 추적 파라미터를 새로 만들거나 이름을 바꾸면 다 지워지지 않을 수 있습니다. 그런 링크는 예시 주소와 함께 이슈로 알려 주세요.
 - `vt.tiktok.com/...`, `a.aliexpress.com/...` 같은 짧은 링크는 사이트 서버가 주소를 풀어 주는 방식이라, 확장 프로그램이 그 안쪽을 바꿀 수 없습니다.
 - `?` 뒤의 쿼리만 정리합니다. 아마존의 `/ref=...`처럼 주소 경로에 섞인 부분은 그대로 둡니다.
-- 페이지를 열 때 주소창을 자동으로 정리하는 사이트는 알리익스프레스와 인스타그램뿐입니다.
+- 페이지를 열 때 주소창을 자동으로 정리하는 사이트는 알리익스프레스, 인스타그램, 스레드뿐입니다.
 
 ## 설치
 
-1. [최신 ZIP 다운로드](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.2.0.zip) 후 압축을 풉니다.
+1. [최신 ZIP 다운로드](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.3.0.zip) 후 압축을 풉니다.
 2. 크롬에서 `chrome://extensions`를 열고 **개발자 모드**를 켭니다.
 3. **압축해제된 확장 프로그램을 로드합니다**를 눌러 폴더를 선택합니다.
 

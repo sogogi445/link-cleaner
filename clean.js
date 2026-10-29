@@ -42,6 +42,12 @@
       u.search = keep ? "?img_index=" + encodeURIComponent(keep) : "";
       return u.toString();
     }
+    // 스레드: 게시물/프로필 주소는 쿼리(xmt, slof 등)가 전부 불필요 (검색 주소는 제외)
+    if (/(^|\.)threads\.(com|net)$/i.test(u.hostname) && !/^\/search(?:\/|$)/i.test(u.pathname)) {
+      if (!u.search) return str;
+      u.search = "";
+      return u.toString();
+    }
     const rules = GLOBAL.slice();
     for (const [hostRe, list] of BY_HOST) if (hostRe.test(u.hostname)) rules.push(...list);
     let changed = false;
@@ -116,9 +122,9 @@
     } catch {}
   }, true);
 
-  // 4) 알리익스프레스/인스타그램: 페이지를 열자마자 주소창의 추적 꼬리표를 정리
+  // 4) 알리익스프레스/인스타그램/스레드: 페이지를 열자마자 주소창의 추적 꼬리표를 정리
   try {
-    if (window === window.top && /(^|\.)(aliexpress\.[a-z.]+|instagram\.com)$/i.test(location.hostname) && location.search) {
+    if (window === window.top && /(^|\.)(aliexpress\.[a-z.]+|instagram\.com|threads\.(?:com|net))$/i.test(location.hostname) && location.search) {
       const clean = cleanUrl(location.href);
       if (clean !== location.href) history.replaceState(history.state, "", clean);
     }

@@ -17,6 +17,7 @@ https://www.instagram.com/p/ABC123/?igsh=MXx  ->  https://www.instagram.com/p/AB
 - **Everywhere**: `utm_*`, `fbclid`, `gclid`, `igsh`, `igshid`, `msclkid`, `mc_cid`, and similar.
 - **AliExpress**: product pages (`/item/123.html`) lose everything after `?`, and the address bar is cleaned as soon as the page opens.
 - **Instagram**: posts, reels, stories and profiles lose everything after `?` (except the carousel slide `img_index`), and the address bar is cleaned as soon as the page opens.
+- **Threads**: posts and profiles lose everything after `?` (`xmt`, `slof`, etc.; search URLs are left alone), and the address bar is cleaned as soon as the page opens.
 - **Also**: TikTok, Facebook and Amazon tracking parameters. These rules are based on commonly seen parameter names and have only been checked against sample URLs, so some links may keep a few parameters.
 
 ## How it works
@@ -38,11 +39,11 @@ It makes no network requests. Permissions: `activeTab` and `scripting` (read the
 - Sites can add or rename tracking parameters at any time. If a link is not fully cleaned, please open an issue with an example URL.
 - Short links such as `vt.tiktok.com/...` or `a.aliexpress.com/...` are expanded by the site's server, so the extension cannot change what is behind them.
 - Only the query string (after `?`) is cleaned. Tracking parts inside the path, such as Amazon's `/ref=...`, are left as they are.
-- Address-bar cleanup on page load is limited to AliExpress and Instagram.
+- Address-bar cleanup on page load is limited to AliExpress, Instagram and Threads.
 
 ## Install
 
-1. [Download the latest ZIP](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.2.0.zip) and unzip it.
+1. [Download the latest ZIP](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.3.0.zip) and unzip it.
 2. Open `chrome://extensions` and turn on **Developer mode**.
 3. Click **Load unpacked** and select the folder.
 
