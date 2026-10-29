@@ -7,6 +7,7 @@ A Chrome extension that removes tracking tails from links when you hit "Share" o
 ```
 https://x.com/user/status/123?a=8fkf36ERdo&s=20   ->  https://x.com/user/status/123
 https://youtu.be/dQw4w9WgXcQ?si=AbC123&t=42       ->  https://youtu.be/dQw4w9WgXcQ?t=42
+https://www.instagram.com/p/ABC123/?igsh=MXx  ->  https://www.instagram.com/p/ABC123/
 ```
 
 ## What it cleans
