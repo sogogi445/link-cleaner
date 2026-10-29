@@ -28,7 +28,7 @@ https://youtu.be/dQw4w9WgXcQ?si=AbC123&t=42       ->  https://youtu.be/dQw4w9WgX
 
 ## 설치
 
-1. 이 저장소를 내려받아(Code -> Download ZIP) 압축을 풉니다.
+1. [최신 ZIP 다운로드](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.0.0.zip) 후 압축을 풉니다.
 2. 크롬에서 `chrome://extensions`를 열고 **개발자 모드**를 켭니다.
 3. **압축해제된 확장 프로그램을 로드합니다**를 눌러 폴더를 선택합니다.
 

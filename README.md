@@ -28,7 +28,7 @@ It needs no permissions and makes no network requests.
 
 ## Install
 
-1. Download this repository (Code -> Download ZIP) and unzip it.
+1. [Download the latest ZIP](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.0.0.zip) and unzip it.
 2. Open `chrome://extensions` and turn on **Developer mode**.
 3. Click **Load unpacked** and select the folder.
 
