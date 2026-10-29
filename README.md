@@ -17,7 +17,7 @@ https://www.instagram.com/p/ABC123/?igsh=MXx  ->  https://www.instagram.com/p/AB
 - **Everywhere**: `utm_*`, `fbclid`, `gclid`, `igsh`, `igshid`, `msclkid`, `mc_cid`, and similar.
 - **AliExpress**: product pages (`/item/123.html`) lose everything after `?`, and the address bar is cleaned as soon as the page opens.
 - **Instagram**: posts, reels, stories and profiles lose everything after `?` (except the carousel slide `img_index`), and the address bar is cleaned as soon as the page opens.
-- **Also**: TikTok, Facebook, Amazon tracking parameters.
+- **Also**: TikTok, Facebook and Amazon tracking parameters. These rules are based on commonly seen parameter names and have only been checked against sample URLs, so some links may keep a few parameters.
 
 ## How it works
 
@@ -32,6 +32,13 @@ A content script runs in the page context and wraps:
 Copying from the address bar (Ctrl+C) is done by Chrome itself, so an extension cannot intercept it. Instead, press **Alt+C** (or click the toolbar icon) and the cleaned URL of the current tab is copied. A badge shows `OK` when done. Change the shortcut at `chrome://extensions/shortcuts`.
 
 It makes no network requests. Permissions: `activeTab` and `scripting` (read the current tab's URL and copy to the clipboard when you press the shortcut), `clipboardWrite`.
+
+## Limitations
+
+- Sites can add or rename tracking parameters at any time. If a link is not fully cleaned, please open an issue with an example URL.
+- Short links such as `vt.tiktok.com/...` or `a.aliexpress.com/...` are expanded by the site's server, so the extension cannot change what is behind them.
+- Only the query string (after `?`) is cleaned. Tracking parts inside the path, such as Amazon's `/ref=...`, are left as they are.
+- Address-bar cleanup on page load is limited to AliExpress and Instagram.
 
 ## Install
 
