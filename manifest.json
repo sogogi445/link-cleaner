@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "공유 링크 꼬리표 제거",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "공유하기/링크 복사 시 붙는 추적 꼬리표(si, s, utm_* 등)를 자동으로 지웁니다. Alt+C로 현재 주소를 깨끗하게 복사합니다.",
   "permissions": ["activeTab", "scripting", "clipboardWrite"],
   "background": { "service_worker": "background.js" },

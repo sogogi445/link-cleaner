@@ -15,7 +15,8 @@ https://youtu.be/dQw4w9WgXcQ?si=AbC123&t=42       ->  https://youtu.be/dQw4w9WgX
 - **유튜브**: `si`, `feature`, `pp` (시작 시간 `t=`와 `list=`는 유지)
 - **모든 사이트**: `utm_*`, `fbclid`, `gclid`, `igsh`, `igshid`, `msclkid`, `mc_cid` 등
 - **알리익스프레스**: 상품 주소(`/item/123.html`)는 `?` 뒤 전부를 지우고, 페이지를 열자마자 주소창도 깨끗하게 바꿈
-- **그 외**: 틱톡, 페이스북, 인스타그램, 아마존의 추적 파라미터
+- **인스타그램**: 게시물·릴스·스토리·프로필 주소의 `?` 뒤 전부 (캐러셀 몇 번째 사진인지 `img_index`만 유지), 페이지를 열자마자 주소창도 깨끗하게 바꿈
+- **그 외**: 틱톡, 페이스북, 아마존의 추적 파라미터
 
 ## 동작 방식
 
@@ -33,7 +34,7 @@ https://youtu.be/dQw4w9WgXcQ?si=AbC123&t=42       ->  https://youtu.be/dQw4w9WgX
 
 ## 설치
 
-1. [최신 ZIP 다운로드](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.1.0.zip) 후 압축을 풉니다.
+1. [최신 ZIP 다운로드](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.2.0.zip) 후 압축을 풉니다.
 2. 크롬에서 `chrome://extensions`를 열고 **개발자 모드**를 켭니다.
 3. **압축해제된 확장 프로그램을 로드합니다**를 눌러 폴더를 선택합니다.
 

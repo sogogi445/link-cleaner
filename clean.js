@@ -34,6 +34,14 @@
       u.search = "";
       return u.toString();
     }
+    // 인스타그램: 게시물/릴스/프로필 주소는 캐러셀 번호(img_index)만 남기고 쿼리 전부 삭제
+    if (/(^|\.)instagram\.com$/i.test(u.hostname) &&
+        !/^\/(?:accounts|explore\/search|direct|challenge|api|graphql)(?:\/|$)/i.test(u.pathname)) {
+      const keep = u.searchParams.get("img_index");
+      if (!u.search) return str;
+      u.search = keep ? "?img_index=" + encodeURIComponent(keep) : "";
+      return u.toString();
+    }
     const rules = GLOBAL.slice();
     for (const [hostRe, list] of BY_HOST) if (hostRe.test(u.hostname)) rules.push(...list);
     let changed = false;
@@ -108,9 +116,9 @@
     } catch {}
   }, true);
 
-  // 4) 알리익스프레스 상품 페이지: 주소창의 추적 꼬리표를 바로 정리
+  // 4) 알리익스프레스/인스타그램: 페이지를 열자마자 주소창의 추적 꼬리표를 정리
   try {
-    if (window === window.top && /(^|\.)aliexpress\.[a-z.]+$/i.test(location.hostname) && location.search) {
+    if (window === window.top && /(^|\.)(aliexpress\.[a-z.]+|instagram\.com)$/i.test(location.hostname) && location.search) {
       const clean = cleanUrl(location.href);
       if (clean !== location.href) history.replaceState(history.state, "", clean);
     }

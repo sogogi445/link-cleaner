@@ -15,7 +15,8 @@ https://youtu.be/dQw4w9WgXcQ?si=AbC123&t=42       ->  https://youtu.be/dQw4w9WgX
 - **YouTube**: `si`, `feature`, `pp`. The timestamp `t=` and `list=` are kept.
 - **Everywhere**: `utm_*`, `fbclid`, `gclid`, `igsh`, `igshid`, `msclkid`, `mc_cid`, and similar.
 - **AliExpress**: product pages (`/item/123.html`) lose everything after `?`, and the address bar is cleaned as soon as the page opens.
-- **Also**: TikTok, Facebook, Instagram, Amazon tracking parameters.
+- **Instagram**: posts, reels, stories and profiles lose everything after `?` (except the carousel slide `img_index`), and the address bar is cleaned as soon as the page opens.
+- **Also**: TikTok, Facebook, Amazon tracking parameters.
 
 ## How it works
 
@@ -33,7 +34,7 @@ It makes no network requests. Permissions: `activeTab` and `scripting` (read the
 
 ## Install
 
-1. [Download the latest ZIP](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.1.0.zip) and unzip it.
+1. [Download the latest ZIP](https://github.com/sogogi445/link-cleaner/releases/latest/download/link-cleaner-v1.2.0.zip) and unzip it.
 2. Open `chrome://extensions` and turn on **Developer mode**.
 3. Click **Load unpacked** and select the folder.
 
