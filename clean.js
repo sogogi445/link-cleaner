@@ -94,7 +94,7 @@
   } catch {}
 
   // 3) 입력창을 선택해 Ctrl+C 로 복사하는 경우
-  document.addEventListener("copy", (e) => {
+  if (typeof document !== "undefined") document.addEventListener("copy", (e) => {
     try {
       const a = document.activeElement;
       const sel = a && /^(INPUT|TEXTAREA)$/.test(a.tagName) && a.selectionStart != null
@@ -108,6 +108,16 @@
     } catch {}
   }, true);
 
+  // 4) 알리익스프레스 상품 페이지: 주소창의 추적 꼬리표를 바로 정리
+  try {
+    if (window === window.top && /(^|\.)aliexpress\.[a-z.]+$/i.test(location.hostname) && location.search) {
+      const clean = cleanUrl(location.href);
+      if (clean !== location.href) history.replaceState(history.state, "", clean);
+    }
+  } catch {}
+
   // 테스트용 노출
   if (typeof module !== "undefined") module.exports = { cleanUrl, cleanText };
+  // background.js(서비스 워커)에서 importScripts 로 불러 쓸 때
+  if (typeof importScripts === "function") self.cleanUrl = cleanUrl;
 })();
