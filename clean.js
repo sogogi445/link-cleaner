@@ -13,6 +13,7 @@
     [/(^|\.)tiktok\.com$/i, [/^_t$/i, /^_r$/i, /^is_from_webapp$/i, /^sender_device$/i, /^web_id$/i, /^refer$/i, /^checksum$/i, /^u_code$/i]],
     [/(^|\.)(facebook|fb)\.com$/i, [/^mibextid$/i, /^rdid$/i, /^sfnsn$/i]],
     [/(^|\.)aliexpress\.[a-z.]+$/i, [/^aff_/i, /^algo_/i, /^pdp_/i, /^sourceType$/i, /^channel$/i, /^afSmartRedirect$/i, /^gatewayAdapt$/i, /^tt$/i, /^businessType$/i, /^src$/i, /^sk$/i, /^aff$/i, /^dp$/i, /^terminal_id$/i, /^utparam/i]],
+    [/(^|\.)coupang\.com$/i, [/^sourceType$/i, /^searchId$/i, /^rank$/i, /^searchRank$/i, /^itemsCount$/i, /^isAddedCart$/i, /^clickEventId$/i, /^traceId$/i, /^landingType$/i, /^wPcid$/i, /^wRef$/i, /^wTime$/i, /^src$/i, /^spec$/i, /^lptag$/i, /^subid$/i, /^ctag$/i, /^campaignid$/i, /^adgroupid$/i, /^isDirectLink$/i, /^redirect$/i]],
     [/(^|\.)amazon\.[a-z.]+$/i, [/^tag$/i, /^ref_?$/i, /^pf_rd_/i, /^pd_rd_/i, /^qid$/i, /^sr$/i, /^crid$/i, /^sprefix$/i, /^keywords$/i]],
   ];
 
@@ -46,6 +47,14 @@
     if (/(^|\.)threads\.(com|net)$/i.test(u.hostname) && !/^\/search(?:\/|$)/i.test(u.pathname)) {
       if (!u.search) return str;
       u.search = "";
+      return u.toString();
+    }
+    // 쿠팡: 상품 주소(/vp/products/숫자)는 옵션을 가리키는 itemId, vendorItemId만 남기고 쿼리 전부 삭제
+    if (/(^|\.)coupang\.com$/i.test(u.hostname) && /^\/(?:vp\/)?products\/\d+\/?$/i.test(u.pathname)) {
+      if (!u.search) return str;
+      const keep = new URLSearchParams();
+      for (const k of ["itemId", "vendorItemId"]) if (u.searchParams.has(k)) keep.set(k, u.searchParams.get(k));
+      u.search = keep.toString();
       return u.toString();
     }
     const rules = GLOBAL.slice();
@@ -122,9 +131,9 @@
     } catch {}
   }, true);
 
-  // 4) 알리익스프레스/인스타그램/스레드: 페이지를 열자마자 주소창의 추적 꼬리표를 정리
+  // 4) 알리익스프레스/인스타그램/스레드/쿠팡: 페이지를 열자마자 주소창의 추적 꼬리표를 정리
   try {
-    if (window === window.top && /(^|\.)(aliexpress\.[a-z.]+|instagram\.com|threads\.(?:com|net))$/i.test(location.hostname) && location.search) {
+    if (window === window.top && /(^|\.)(aliexpress\.[a-z.]+|instagram\.com|threads\.(?:com|net)|coupang\.com)$/i.test(location.hostname) && location.search) {
       const clean = cleanUrl(location.href);
       if (clean !== location.href) history.replaceState(history.state, "", clean);
     }
